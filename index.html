@@ -14,16 +14,24 @@
 
 <body>
 
-    <div id= loadGifs>
+    <div id=loadGifs>
         <img src="https://froylandcito.github.io/TriviaGame/assets/images/correct.gif" alt="imageResult">
         <img src="https://froylandcito.github.io/TriviaGame/assets/images/wrong.gif" alt="imageResult">
         <img src="https://froylandcito.github.io/TriviaGame/assets/images/timeout.gif" alt="imageResult">
     </div>
 
     <header>
-        <div id="boxTitle" class="shadow  text-center">
-            <div id="boxTitleContent" class="p-3">
-                <h1>Mexican History Trivia</h1>
+        <div class="row">
+            <div class="col-4 titleColumn boxTitleGreen">
+                <div class="boxTitle centerContent">
+                    <p class="flagText">Trivia</p>
+                </div>
+            </div>
+            <div class="col-4 titleColumn centerFlag"></div>
+            <div class="col-4 titleColumn boxTitleRed">
+                <div class="boxTitle centerContent">
+                    <p class="flagText">Game</p>
+                </div>
             </div>
         </div>
     </header>
@@ -64,7 +72,7 @@
                 <div class="shadow rounded">
                     <p id="answerResult" class="display">All done, here’s how you did!</p>
                 </div>
-                <div class="groupedContent rowDisplay">    
+                <div class="groupedContent rowDisplay">
                     <p id="correctCounter"></p>
                     <p id="incorrectCounter"></p>
                     <p id="timeOutCounter"></p>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 *{
     box-sizing: border-box;
 }
@@ -11,13 +13,15 @@ header{
     height: 13%;
 }
 
-h1{
-    font-size: 2.0rem;
-}
-
 img{
     width: 400px !important;
     height: 250px !important;
+}
+
+.row{
+    height: 100% !important;
+    width: 100% !important;
+    margin: auto !important;
 }
 
 .btn{
@@ -29,23 +33,37 @@ img{
     cursor: pointer;
 }
 
+.titleColumn{
+    border: 1px solid black;
+    border-top: 3px solid black;
+    padding: 0px;
+}
+
+.centerFlag{
+    background: url('../images/centerFlag.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
 #loadGifs{
     display: none;
 }
 
-#boxTitle{
+.boxTitleGreen{
     background: rgb(153, 230, 153) !important;
-    background: rgba(153, 230, 153, .7) !important;
-    border: 1px solid #28a745;
-    height: 100%;
-    width: 100%;
+    border-left: 3px solid black;
 }
 
-#boxTitleContent{
+.boxTitleRed{
+    background: rgb(255,0, 0) !important;
+    border-right: 3px solid black;
+}
+
+.boxTitle{
     height: 100%;
     width: 100%;
-    background: rgb(105, 105, 105);
-    background: rgba(105, 105, 105, .4);
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, .5);
 }
 
 .container{  
@@ -58,9 +76,9 @@ img{
 .content{
     height: 100%;
     width: 100% !important;
-    background: url('../images/mexico2.jpg');
+    background: url('../images/test.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     margin: 0px 0px;
     border: 3px solid rgb(0,0,0);
     color: white;
@@ -96,6 +114,12 @@ img{
     background: rgba(105, 105, 105, .4);
     text-align: center;
     padding: 15px 0px;
+}
+
+.flagText{
+    margin: 0px;
+    font-size: 4.0vmax;
+    font-family: 'Lobster', cursive;
 }
 
 .centerContent{
