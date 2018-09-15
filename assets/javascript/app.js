@@ -1,30 +1,143 @@
 $(document).ready(function () {
 
-    const defaultQuestionTime = 5;
+    const defaultQuestionTime = 30;
     const defaultRandomGenerator = 100;
     const defaultGameQuestions = 10;
+    const defaultTimeOut = 4000;
     var currentTime;
     var questionTimer;
+    var resultTimeOut;
     var questions = [];
+    var currentQuestion = {};
+    var correctAnswers = 0;
+    var wrongAnswers = 0;
+    var timeOutAnswers = 0;
 
+    $('#start').on("click", startHandler);
+    $('#startOver').on('click', initState);
 
+    initState();
 
-    var init = () => {
+    function initState() {
+        cleanInitDivs();
+        $('#startContent').show();
+    };
+
+    function start() {
         currentTime = defaultQuestionTime;
-        questions = sortArray(createQuestions().questions).slice(defaultGameQuestions);
-        //initDisplay();
+        currentQuestion = {};
+        correctAnswers = 0;
+        wrongAnswers = 0;
+        timeOutAnswers = 0;
+        var array = createQuestions().questions;
+        questions = sortArray(array).slice(array.length - defaultGameQuestions);
+        initDisplay();
     }
 
-   /* $('#start').on("click", () => {
+    function startHandler() {
+        $('#startContent').hide();
+        start();
+    }
+
+    function cleanInitDivs() {
+        $('#triviaContent').hide();
+        $('#questionResultContent').hide();
+        $('#endResultContent').hide();
+    }
+
+    function deleteQuestionFromArray(id) {
+        return questions.filter(elem => {
+            return elem.id !== id;
+        });
+    }
+
+    function initDisplay() {
+        getNextQuestion();
+        drawQuestion(currentQuestion);
+        modifyDisplay(defaultQuestionTime);
+    }
+
+    function getNextQuestion() {
+        clearTimeout(resultTimeOut);
+        currentQuestion = questions[0];
+        questions = deleteQuestionFromArray(currentQuestion.id);
+    }
+
+    function drawQuestion(question) {
+        $('#triviaContent').show();
         stopQuestionTimer();
         questionTimer = setInterval(questionTimerHandler, 1000);
-    }); */
+        var answers = sortArray(question.answers);
+        $('#questionContent').text(question.question);
+        drawAnswers(answers);
+    }
 
-    $('#stop').on("click", () => {
-        stopQuestionTimer();
-    });
+    function drawAnswers(answers) {
+        answers.forEach((answer, index) => {
+            var button = $(`#answer${index + 1}`);
+            $(button).text(answer);
+            $(button).unbind("click");
+            $(button).bind('click', handleAnswerClick);
+        });
+    }
 
-    var sortArray = array => {
+    function handleAnswerClick() {
+        var response = $(this).text();
+        commonTimerEndActions();
+        var resultStatus = response === currentQuestion.correctAnswer
+            ? 'correct' : 'wrong';
+        drawQuestionResult(resultStatus);
+    }
+
+    function drawQuestionResult(resultStatus) {
+        $('#triviaContent').hide();
+        $('#questionResultContent').show();
+        switch (resultStatus) {
+            case 'correct':
+                correctAnswers++;
+                $('#answerResult').text('Correct Answer!')
+                $('#imgResult').attr('src', `assets/images/${currentQuestion.image}`)
+                break;
+            case 'wrong':
+                wrongAnswers++;
+                $('#answerResult').text('Wrong Answer!');
+                $('#imgResult').attr('src', 'assets/images/loose.gif');
+                break;
+            case 'timeout':
+                timeOutAnswers++;
+                console.log('Timeout answers:', timeOutAnswers);
+                $('#answerResult').text('Out of time!');
+                $('#imgResult').attr('src', 'assets/images/outTime.gif');
+                break;
+        }
+
+        clearTimeout(resultTimeOut);
+        resultTimeOut = setTimeout(timeoutHandler, defaultTimeOut);
+    }
+
+    function timeoutHandler() {
+        $('#questionResultContent').hide();
+        if (questions.length > 0) {
+            getNextQuestion();
+            drawQuestion(currentQuestion);
+        } else {
+            clearTimeout(resultTimeOut);
+            drawEndResults();
+        }
+    }
+
+    function drawEndResults() {
+        $('#endResultContent').show();
+        $('#correctCounter').text(`Correct answers: ${correctAnswers}`);
+        $('#incorrectCounter').text(`Wrong answers: ${wrongAnswers}`);
+        $('#timeOutCounter').text(`Unanswered: ${timeOutAnswers}`);
+    }
+
+    function modifyDisplay(currentTime) {
+        $('#displayTime').text(`Time Remaining: ${currentTime} seconds`);
+    }
+
+    function sortArray(array) {
         var id = 0;
         var randomArray = array.map(() => {
             const randomNumber = Math.floor(Math.random() * defaultRandomGenerator);
@@ -34,16 +147,16 @@ $(document).ready(function () {
             };
         });
 
-        var sortedArray =  randomArray.sort((elem1, elem2) => {
+        var sortedArray = randomArray.sort((elem1, elem2) => {
             return elem1.randomNumber - elem2.randomNumber;
         });
 
-        return sortedArray.map(elem=>{
-            return array[elem.id - 1];
+        return sortedArray.map(elem => {
+            return array[elem.id];
         });
     }
 
-    var createQuestions = () => {
+    function createQuestions() {
         return {
             questions: [
                 {
@@ -76,7 +189,7 @@ $(document).ready(function () {
                 },
                 {
                     id: 5,
-                    question: `Name of the last Mexica emperor, whom the Spanish conquistadors tortured by burning his feet:`,
+                    question: `Name of the last Mexica emperor, whom the conquistadors tortured burning his feet:`,
                     correctAnswer: `Cuauhtémoc`,
                     answers: ['Cuauhtémoc', 'Moctezuma', 'Moctezuma II', 'Cuitlahuac'],
                     image: 'cuahutemoc.jpg'
@@ -90,21 +203,21 @@ $(document).ready(function () {
                 },
                 {
                     id: 7,
-                    question: `In Mexico, from the viceroyalty, creoles are:`,
-                    correctAnswer: `The children of Spaniards born in New Spain`,
-                    answers: ['The children of Spaniards born in New Spain', 'Spaniards visiting New Spain', 'Mexicas children', 'Independence strugglers'],
-                    image: 'creoles.gif'
+                    question: `In wich olympic games Mexico won the gold medal in soccer?`,
+                    correctAnswer: `London 2012`,
+                    answers: ['London 2012', 'Mexico 1970', 'Spain 1982', 'Atlanta 1996'],
+                    image: 'gold.jpg'
                 },
                 {
                     id: 8,
                     question: `The Mexican Independence struggle began in:`,
                     correctAnswer: `1810 `,
                     answers: ['1810 ', '1811', '1825', '1910'],
-                    image: ''
+                    image: 'mexico2.jpg'
                 },
                 {
                     id: 9,
-                    question: `Mexico lost half of its territory in the mid-nineteenth century, as a result of the confrontation with:`,
+                    question: `Mexico lost half of its territory as a result of the confrontation with:`,
                     correctAnswer: `United States of America`,
                     answers: ['United States of America', 'France', 'England', 'Germany'],
                     image: 'lostusa.jpg'
@@ -133,7 +246,7 @@ $(document).ready(function () {
                 {
                     id: 13,
                     question: `The "Adelitas" accompanied their men to combat in:`,
-                    correctAnswer: `The Revolution of 1910`,
+                    correctAnswer: `The Revolution`,
                     answers: ['The Revolution', 'The Independence', 'Chapultepec War', 'The Pastry War'],
                     image: 'adelitas.png'
                 },
@@ -161,13 +274,13 @@ $(document).ready(function () {
                 {
                     id: 17,
                     question: `Mexico has borders with:`,
-                    correctAnswer: `USA, Guatemala y Belice`,
-                    answers: ['USA, Guatemala and Belice', 'Belia, Guatemala and Canada', 'USA and Canada', 'USA, Cuba'],
+                    correctAnswer: `USA, Guatemala, Belice`,
+                    answers: ['USA, Guatemala, Belice', 'Belice, Salvador, Cuba', 'USA, Canada', 'USA, Cuba'],
                     image: 'borders.jpeg'
                 },
                 {
                     id: 18,
-                    question: `The state of the Republic of greater territorial extension is:`,
+                    question: `The state of the Republic with greater territorial extension is:`,
                     correctAnswer: `Chihuahua`,
                     answers: ['Chihuahua', 'Chiapas', 'CDMX', 'Sonora'],
                     image: 'chihuahua.jpg'
@@ -181,42 +294,33 @@ $(document).ready(function () {
                 },
                 {
                     id: 20,
-                    question: `With which countries did Mexico celebrate the trade treaty known as NAFTA?`,
+                    question: `With which countries did Mexico celebrate the trade known as NAFTA?`,
                     correctAnswer: `USA and Canada`,
-                    answers: ['USA and Canada', 'Colombia, Argentina and Brazil', 'Venezuela and Cuba', 'Canada'],
+                    answers: ['USA and Canada', 'Colombia, Argentina', 'Venezuela and Cuba', 'Canada'],
                     image: 'nafta.jpg'
                 }
             ]
         }
     }
 
-    var questionTimerHandler = () => {
+    function questionTimerHandler() {
         currentTime--;
         modifyDisplay(currentTime);
         if (currentTime < 0) {
-            questionTimerEndActions();
+            commonTimerEndActions();
+            drawQuestionResult('timeout');
         }
     }
 
-    var questionTimerEndActions = () => {
+    function commonTimerEndActions() {
+        stopQuestionTimer();
         currentTime = defaultQuestionTime;
         modifyDisplay(currentTime);
-        stopQuestionTimer();
     }
 
-    var stopQuestionTimer = () => {
+    function stopQuestionTimer() {
         clearInterval(questionTimer);
     }
-
-    var initDisplay = () => {
-        modifyDisplay(defaultQuestionTime);
-    }
-
-    var modifyDisplay = (currentTime) => {
-        $('#display').text(currentTime);
-    }
-
-    init();
 
 });
 
