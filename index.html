@@ -27,9 +27,9 @@
             <div id="startContent">
                 <button id="start" class="btn btn-success" type="button">START</button>
             </div>
-            
+
             <div id="triviaContent" class="triviaWrapper">
-                <div id="displayDiv" class="shadow rounded">
+                <div class="shadow rounded">
                     <p id="displayTime" class="display"></p>
                 </div>
                 <div id="questionGroup" class="groupedContent shadow rounded">
@@ -37,33 +37,33 @@
                         <p id="questionContent"></p>
                     </div>
                     <div id="answers" class="rowDisplay">
-                        <button id='answer1'  class="btn btn-success" type="button"></button>
-                        <button id='answer2'  class="btn btn-success" type="button"></button>
-                        <button id='answer3'  class="btn btn-success" type="button"></button>
-                        <button id='answer4'  class="btn btn-success" type="button"></button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="triviaWrapper" id="questionResultContent">
-                <div class="groupedContent">
-                    <p id="answerResult"></p>
-                    <div class="row">
-                        <div class="col-md-12">
-                                <img id="imgResult" class="img-thumbnail" src="" alt="imageResult">
-                        </div>
+                        <button id='answer1' class="btn btn-success" type="button"></button>
+                        <button id='answer2' class="btn btn-success" type="button"></button>
+                        <button id='answer3' class="btn btn-success" type="button"></button>
+                        <button id='answer4' class="btn btn-success" type="button"></button>
                     </div>
                 </div>
             </div>
 
+            <div class="triviaWrapper" id="questionResultContent">
+                <div class="shadow rounded">
+                    <p id="answerResult" class="display"></p>
+                </div>
+                <div class="groupedContent">
+                    <img id="imgResult" class="img-thumbnail" src="" alt="imageResult">
+                </div>
+            </div>
+
             <div class="triviaWrapper" id="endResultContent">
-                    <div class="groupedContent">
-                        <p>All done, here’s how you did!</p>
-                        <p id="correctCounter"></p>
-                        <p id="incorrectCounter"></p>
-                        <p id="timeOutCounter"></p>
-                        <button id='startOver' class="btn btn-success" type="button">Start Over?</button>
-                    </div>
+                <div class="shadow rounded">
+                    <p id="answerResult" class="display">All done, here’s how you did!</p>
+                </div>
+                <div class="groupedContent">    
+                    <p id="correctCounter"></p>
+                    <p id="incorrectCounter"></p>
+                    <p id="timeOutCounter"></p>
+                    <button id='startOver' class="btn btn-success" type="button">Start Over?</button>
+                </div>
             </div>
 
         </section>

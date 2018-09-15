@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
-    const defaultQuestionTime = 30;
+    const defaultQuestionTime = 20;
     const defaultRandomGenerator = 100;
-    const defaultGameQuestions = 10;
-    const defaultTimeOut = 4000;
+    const defaultGameQuestions = 3;
+    const defaultTimeOut = 2000;
     var currentTime;
     var questionTimer;
     var resultTimeOut;
@@ -107,15 +107,15 @@ $(document).ready(function () {
         switch (resultStatus) {
             case 'correct':
                 correctAnswers++;
-                displayResultElements('Correct Answer!', currentQuestion.image);
+                displayResultElements('Correct Answer!', `${resultStatus}.gif`);
                 break;
             case 'wrong':
                 wrongAnswers++;
-                displayResultElements('Wrong Answer!', 'loose.gif');
+                displayResultElements('Wrong Answer!', `${resultStatus}.gif`);
                 break;
             case 'timeout':
                 timeOutAnswers++;
-                displayResultElements('Out of time!', 'outTime.gif');
+                displayResultElements('Out of time!', `${resultStatus}.gif`);
                 break;
         }
     }
