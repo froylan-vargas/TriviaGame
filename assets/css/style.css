@@ -6,7 +6,28 @@ html,body{
     height: 100%;
 }
 
+header{
+    color: white;
+    height: 13%;
+}
 
+h1{
+    font-size: 2.0rem;
+}
+
+img{
+    width: 400px !important;
+    height: 250px !important;
+}
+
+.btn{
+    width: 60%;
+    background: rgb(153, 230, 153) !important;
+    background: rgba(153, 230, 153, .7) !important;
+    margin-bottom: 20px;
+    font-size: 2.5vmax;
+    cursor: pointer;
+}
 
 #boxTitle{
     background: rgb(153, 230, 153) !important;
@@ -16,17 +37,6 @@ html,body{
     width: 100%;
 }
 
-h1{
-    font-size: 2.0rem;
-}
-
-.container{  
-    height: 87%;
-    margin: 0px;
-    padding:0px 0px;
-    min-width: 100%;
-}
-
 #boxTitleContent{
     height: 100%;
     width: 100%;
@@ -34,17 +44,11 @@ h1{
     background: rgba(105, 105, 105, .4);
 }
 
-.columnDisplay{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.rowDisplay{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.container{  
+    height: 87%;
+    margin: 0px;
+    padding:0px 0px;
+    min-width: 100%;
 }
 
 .content{
@@ -67,15 +71,6 @@ h1{
     padding: 20px;
 }
 
-.display{
-    background: rgb(0, 0, 0);
-    background: rgba(0, 0, 0, .3);
-    border: 1px solid rgb(0,0,0);
-    font-size: 2.5vmax;
-    width: 100%;
-    margin: 0px auto;
-}
-
 .groupedContent{
     width: 100%;
     margin: 20px auto;
@@ -85,15 +80,6 @@ h1{
     height: 88%;
     font-size: 2.5vmax;
     padding-top:10px;
-}
-
-img{
-    width: 400px !important;
-    height: 250px !important;
-}
-
-#questionDiv{
-    margin-top: 15px;
 }
 
 #startContent{
@@ -108,16 +94,28 @@ img{
     padding: 15px 0px;
 }
 
-.btn{
-    width: 60%;
-    background: rgb(153, 230, 153) !important;
-    background: rgba(153, 230, 153, .7) !important;
-    margin-bottom: 20px;
+.display{
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, .3);
+    border: 1px solid rgb(0,0,0);
     font-size: 2.5vmax;
-    cursor: pointer;
+    width: 100%;
+    margin: 0px auto;
 }
 
-header{
-    color: white;
-    height: 13%;
+#questionDiv{
+    margin-top: 15px;
 }
+
+.rowDisplay{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+

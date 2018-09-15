@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     function getQuestions() {
         var array = createQuestions();
-        return sortArray(array).slice(array.length - defaultGameQuestions);
+        return randomAndSortArray(array).slice(array.length - defaultGameQuestions);
     }
 
     function startHandler() {
@@ -73,9 +73,8 @@ $(document).ready(function () {
 
     function drawQuestion(questionElement) {
         $('#triviaContent').show();
-        stopQuestionTimer();
-        questionTimer = setInterval(questionTimerHandler, 1000);
-        var answers = sortArray(questionElement.answers);
+        startQuestionTimer();
+        var answers = randomAndSortArray(questionElement.answers);
         $('#questionContent').text(questionElement.question);
         drawAnswers(answers);
     }
@@ -100,24 +99,38 @@ $(document).ready(function () {
     function drawQuestionResult(resultStatus) {
         $('#triviaContent').hide();
         $('#questionResultContent').show();
+        resultLogic(resultStatus);
+        startResultTimeOut();
+    }
+    
+    function resultLogic(resultStatus){
         switch (resultStatus) {
             case 'correct':
                 correctAnswers++;
-                $('#answerResult').text('Correct Answer!')
-                $('#imgResult').attr('src', `assets/images/${currentQuestion.image}`)
+                displayResultElements('Correct Answer!', currentQuestion.image);
                 break;
             case 'wrong':
                 wrongAnswers++;
-                $('#answerResult').text('Wrong Answer!');
-                $('#imgResult').attr('src', 'assets/images/loose.gif');
+                displayResultElements('Wrong Answer!', 'loose.gif');
                 break;
             case 'timeout':
                 timeOutAnswers++;
-                $('#answerResult').text('Out of time!');
-                $('#imgResult').attr('src', 'assets/images/outTime.gif');
+                displayResultElements('Out of time!', 'outTime.gif');
                 break;
         }
+    }
 
+    function displayResultElements(message, image){
+        $('#answerResult').text(message);
+        $('#imgResult').attr('src', `assets/images/${image}`);
+    }
+
+    function startQuestionTimer(){
+        stopQuestionTimer();
+        questionTimer = setInterval(questionTimerHandler, 1000);
+    }
+    
+    function startResultTimeOut(){
         clearTimeout(resultTimeOut);
         resultTimeOut = setTimeout(timeoutHandler, defaultTimeOut);
     }
@@ -144,22 +157,29 @@ $(document).ready(function () {
         $('#displayTime').text(`Time Remaining: ${currentTime} seconds`);
     }
 
-    function sortArray(array) {
+    function randomAndSortArray(array){
+        const randomArray = createRandomNumbersArray(array);
+        const sortedRandomArray = sortRandomArray(randomArray);
+        return sortedRandomArray.map(elem => {
+            return array[elem.id];
+        });
+    }
+    
+    function sortRandomArray(array)
+    {
+        return array.sort((elem1, elem2) => {
+            return elem1.randomNumber - elem2.randomNumber;
+        });
+    }
+
+    function createRandomNumbersArray(array){
         var id = 0;
-        var randomArray = array.map(() => {
+        return array.map(() => {
             const randomNumber = Math.floor(Math.random() * defaultRandomGenerator);
             return {
                 randomNumber: randomNumber,
                 id: id++
             };
-        });
-
-        var sortedArray = randomArray.sort((elem1, elem2) => {
-            return elem1.randomNumber - elem2.randomNumber;
-        });
-
-        return sortedArray.map(elem => {
-            return array[elem.id];
         });
     }
 
