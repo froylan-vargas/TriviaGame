@@ -7,12 +7,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia game</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
+        crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
- 
+
 </head>
 
 <body>
+
+    <header>
+        <div id="boxTitle" class="shadow  text-center">
+            <div id="boxTitleContent" class="p-3">
+                <h1>Mexican History Trivia</h1>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <section class="content">
+            <!--<div id="startContent">
+                    <button id="start" class="btn btn-success" type="button">START</button>
+                </div>-->
+            <!--<div id="triviaContent" class="triviaWrapper">
+                <div id="displayDiv" class="shadow rounded">
+                    <p class="display">Time Remaining: 29 seconds</p>
+                </div>
+                <div id="questionGroup" class="groupedContent shadow rounded">
+                    <div id="questionDiv">
+                        <p id="questionContent">Deity of ancient Mexico known as the "Feathered Serpent":</p>
+                    </div>
+                    <div id="answers" class="rowDisplay">
+                        <button class="btn btn-success" type="button">Quetzalcóatl</button>
+                        <button class="btn btn-success" type="button">Tlaloc</button>
+                        <button class="btn btn-success" type="button">Mixcóatl</button>
+                        <button class="btn btn-success" type="button">Cuauhtémoc</button>
+                    </div>
+                </div>
+            </div>-->
+            <div class="triviaWrapper" id="questionResultContent">
+                <div class="groupedContent">
+                    <p>Wrong answer!</p>    
+                    <img class="img-fluid" src="./assets/images/quetzalcoatl.jpg" alt="loose">
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/javascript/app.js"></script>

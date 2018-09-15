@@ -1,7 +1,122 @@
+*{
+    box-sizing: border-box;
+}
+
 html,body{
     height: 100%;
 }
 
-body {
-    background-color: black;
+
+
+#boxTitle{
+    background: rgb(153, 230, 153) !important;
+    background: rgba(153, 230, 153, .7) !important;
+    border: 1px solid #28a745;
+    height: 100%;
+    width: 100%;
+}
+
+h1{
+    font-size: 2.0rem;
+}
+
+.container{  
+    height: 84%;
+    margin: auto;
+    padding:0px 5px;
+}
+
+#boxTitleContent{
+    height: 100%;
+    width: 100%;
+    background: rgb(105, 105, 105);
+    background: rgba(105, 105, 105, .4);
+}
+
+.columnDisplay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rowDisplay{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    height: 100%;
+    width: 100% !important;
+    background: url('../images/mexico2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 10px 0px;
+    border: 3px solid rgb(0,0,0);
+    color: white;
+}
+
+.triviaWrapper{
+    height: 100%;
+    width: 100%;
+    background: rgb(105, 105, 105);
+    background: rgba(105, 105, 105, .4);
+    text-align: center;
+    padding: 20px;
+}
+
+.display{
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, .3);
+    border: 1px solid rgb(0,0,0);
+    font-size: 2.5vmax;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.groupedContent{
+    width: 100%;
+    margin: 20px auto;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, .3);
+    border: 1px solid rgb(0,0,0); 
+    height: 88%;
+    font-size: 2.5vmax;
+}
+
+/*img{
+    width: 200px;
+    height: 200px;
+}*/
+
+#questionDiv{
+    margin-top: 15px;
+}
+
+#startContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: rgb(105, 105, 105);
+    background: rgba(105, 105, 105, .4);
+    text-align: center;
+    padding: 15px 0px;
+}
+
+
+
+.btn{
+    width: 60%;
+    background: rgb(153, 230, 153) !important;
+    background: rgba(153, 230, 153, .7) !important;
+    margin-bottom: 20px;
+    font-size: 2.5vmax;
+    cursor: pointer;
+}
+
+header{
+    color: white;
 }
