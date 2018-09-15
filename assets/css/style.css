@@ -29,6 +29,10 @@ img{
     cursor: pointer;
 }
 
+#loadGifs{
+    display: none;
+}
+
 #boxTitle{
     background: rgb(153, 230, 153) !important;
     background: rgba(153, 230, 153, .7) !important;
