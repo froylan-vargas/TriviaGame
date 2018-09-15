@@ -102,8 +102,8 @@ $(document).ready(function () {
         resultLogic(resultStatus);
         startResultTimeOut();
     }
-    
-    function resultLogic(resultStatus){
+
+    function resultLogic(resultStatus) {
         switch (resultStatus) {
             case 'correct':
                 correctAnswers++;
@@ -120,17 +120,18 @@ $(document).ready(function () {
         }
     }
 
-    function displayResultElements(message, image){
+    function displayResultElements(message, image) {
         $('#answerResult').text(message);
-        $('#imgResult').attr('src', `assets/images/${image}`);
+        $('#imgResult').attr('src',
+            `https://froylandcito.github.io/TriviaGame/assets/images/${image}`);
     }
 
-    function startQuestionTimer(){
+    function startQuestionTimer() {
         stopQuestionTimer();
         questionTimer = setInterval(questionTimerHandler, 1000);
     }
-    
-    function startResultTimeOut(){
+
+    function startResultTimeOut() {
         clearTimeout(resultTimeOut);
         resultTimeOut = setTimeout(timeoutHandler, defaultTimeOut);
     }
@@ -157,22 +158,21 @@ $(document).ready(function () {
         $('#displayTime').text(`Time Remaining: ${currentTime} seconds`);
     }
 
-    function randomAndSortArray(array){
+    function randomAndSortArray(array) {
         const randomArray = createRandomNumbersArray(array);
         const sortedRandomArray = sortRandomArray(randomArray);
         return sortedRandomArray.map(elem => {
             return array[elem.id];
         });
     }
-    
-    function sortRandomArray(array)
-    {
+
+    function sortRandomArray(array) {
         return array.sort((elem1, elem2) => {
             return elem1.randomNumber - elem2.randomNumber;
         });
     }
 
-    function createRandomNumbersArray(array){
+    function createRandomNumbersArray(array) {
         var id = 0;
         return array.map(() => {
             const randomNumber = Math.floor(Math.random() * defaultRandomGenerator);
