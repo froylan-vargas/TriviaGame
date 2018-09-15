@@ -14,7 +14,7 @@ $(document).ready(function () {
     var timeOutAnswers = 0;
 
     $('#start').on("click", startHandler);
-    $('#startOver').on('click', initState);
+    $('#startOver').on('click', startHandler);
 
     initState();
 
