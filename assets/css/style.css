@@ -25,7 +25,7 @@ img{
 }
 
 .btn{
-    width: 60%;
+    width: 80%;
     background: rgb(153, 230, 153) !important;
     background: rgba(153, 230, 153, .7) !important;
     margin-bottom: 20px;
@@ -43,6 +43,14 @@ img{
     background: url('../images/centerFlag.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
+}
+
+#answers{
+    height: 85%;
+}
+
+#questionContent{
+    padding: 0px 5px;
 }
 
 #loadGifs{
@@ -76,7 +84,7 @@ img{
 .content{
     height: 100%;
     width: 100% !important;
-    background: url('../images/test.jpg');
+    background: url('../images/mexico.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin: 0px 0px;
