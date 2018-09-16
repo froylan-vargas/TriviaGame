@@ -44,6 +44,7 @@ $(document).ready(function () {
 
     function startHandler() {
         $('#startContent').hide();
+        $('#endResultContent').hide();
         start();
     }
 
