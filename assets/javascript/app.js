@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     const defaultQuestionTime = 30;
     const defaultRandomGenerator = 100;
-    const defaultGameQuestions = 20;
+    const defaultGameQuestions = 10;
     const defaultTimeOut = 4000;
     var currentTime;
     var questionTimer;
