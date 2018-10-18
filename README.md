@@ -1,9 +1,12 @@
-# unit-4-game
-Trivia Game
+# Trivia Game 
 
-## App celebrating Mexican Independence Day
-### Created by Froylan Vargas
+Live Url: https://froylandcito.github.io/TriviaGame/
 
-**The bank of questions is of 20**
-**The questions are always randomized also the answers order**
+## Description
+Trivia game to celebrate the aniversary of Mexican Independence, with a bank of 20 questions. Results displayed at the end. 
+
+### Technical approach
+Randomized questions using algorithm to always randomize questions and answears. Created components: Question and answears, son can be generated dinamically. 
+Timeouts and intervals used for the flow of the game.
+
 
