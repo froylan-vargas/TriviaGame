@@ -125,7 +125,7 @@ $(document).ready(function () {
     function displayResultElements(message, image) {
         $('#answerResult').text(message);
         $('#imgResult').attr('src',
-            `https://froylandcito.github.io/TriviaGame/assets/images/${image}`);
+            `https://froylan-vargas.github.io/TriviaGame/assets/images/${image}`);
     }
 
     function startQuestionTimer() {
