@@ -1,6 +1,6 @@
 # Trivia Game 
 
-Live Url: https://froylandcito.github.io/TriviaGame/
+Live Url: https://froylan-vargas.github.io/TriviaGame/
 
 ## Description
 Trivia game to celebrate the aniversary of Mexican Independence, with a bank of 20 questions. Results displayed at the end. 
